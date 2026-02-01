@@ -11,7 +11,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import sponsorLogo from "@/images/sponsors/sponsor.jpeg";
 import rawConstructions from "@/images/sponsors/rawConstructions.jpg";
-import { Globe, Phone, MapPin, Facebook, Instagram } from "lucide-react";
+import { Globe, Phone, Instagram } from "lucide-react";
 
 interface Sponsor {
   id: number;
