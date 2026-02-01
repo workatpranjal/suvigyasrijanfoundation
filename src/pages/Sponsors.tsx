@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import sponsorLogo from "@/images/sponsors/sponsor.jpeg";
+import rawConstructions from "@/images/sponsors/rawConstructions.jpg";
+import { Globe, Phone, Instagram } from "lucide-react";
 
 interface Sponsor {
   id: number;
@@ -19,9 +21,10 @@ interface Sponsor {
   about: string;
   website?: string;
   tier?: "platinum" | "gold" | "silver" | "bronze";
+  phoneNumber?: string[] | undefined;
+  instagram?: string | undefined;
 }
 
-// Sample sponsors data - replace with actual data source
 const sponsorsData: Sponsor[] = [
   {
     id: 1,
@@ -31,6 +34,23 @@ const sponsorsData: Sponsor[] = [
     about: "Janchhaya News - broadcasted from Lucknow and Jaunpur",
     website: "https://techinnovations.com",
     tier: "platinum",
+    phoneNumber: undefined,
+    instagram: undefined,
+  },
+  {
+    id: 2,
+    name: "Raw Constructions",
+    logo: rawConstructions,
+    category: "Constructions",
+    about:
+      "Raw Constructions carries a four-generation legacy, now led by the fifth generation. Rooted in craftsmanship from the British era, we blend heritage techniques with modern luxury to create timeless spaces.",
+    website: "https://rawconstructions.in",
+    tier: "platinum",
+    phoneNumber: [
+      "9935284040 (Ar. Anushk Sharma) ",
+      "9935870160 (Ar. Sanjay kr. Sharma)",
+    ],
+    instagram: "https://www.instagram.com/rawconstructions_rc",
   },
 ];
 
@@ -100,13 +120,13 @@ const Sponsors = () => {
                       <Badge variant="secondary" className="text-xs">
                         {sponsor.category}
                       </Badge>
-                      <Badge
+                      {/* <Badge
                         className={`text-xs ${getTierColor(sponsor.tier)}`}
                       >
                         {sponsor.tier.charAt(0).toUpperCase() +
                           sponsor.tier.slice(1)}{" "}
                         Sponsor
-                      </Badge>
+                      </Badge> */}
                     </div>
                   </div>
                 </CardContent>
@@ -151,15 +171,55 @@ const Sponsors = () => {
                   <p className="text-muted-foreground leading-relaxed">
                     {selectedSponsor.about}
                   </p>
+                  {selectedSponsor.phoneNumber &&
+                    selectedSponsor.phoneNumber.length > 0 && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-3">
+                        {selectedSponsor.phoneNumber.map((phone, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center gap-2 text-sm text-primary"
+                          >
+                            <Phone className="h-4 w-4 text-primary" />
+                            <a
+                              href={`tel:${phone}`}
+                              className="hover:text-primary transition-colors"
+                            >
+                              {phone}
+                            </a>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  {selectedSponsor.instagram &&
+                    selectedSponsor.instagram.length > 0 && (
+                      <div className="flex items-center gap-3">
+                        <a
+                          href={selectedSponsor.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          // className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
+                          className="inline-flex items-center gap-2 text-primary"
+                          aria-label="Instagram"
+                        >
+                          <Instagram className="h-5 w-5" />
+                          <span className="text-sm font-medium hover:underline">
+                            {selectedSponsor.name}
+                          </span>
+                        </a>
+                      </div>
+                    )}
                   {selectedSponsor.website && (
                     <div className="mt-4">
                       <a
                         href={selectedSponsor.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary hover:underline font-medium"
+                        className="inline-flex items-center gap-2 hover:underline font-medium"
                       >
-                        Visit Website →
+                        <Globe className="h-5 w-5 text-primary" />
+                        <span className="text-sm text-primary">
+                          Visit Website →
+                        </span>
                       </a>
                     </div>
                   )}

@@ -20,6 +20,7 @@ import { marqueeImages } from "@/images/imageData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { marqueeText } from "@/constants/MarqueeText";
 import sponsorLogo from "@/images/sponsors/sponsor.jpeg";
+import rawConstructions from "@/images/sponsors/rawConstructions.jpg";
 
 const Index = () => {
   const { examStatus, loading } = useExamStatus();
@@ -33,6 +34,14 @@ const Index = () => {
       logo: sponsorLogo,
       category: "Media",
       about: "Janchhaya News - broadcasted from Lucknow and Jaunpur",
+    },
+    {
+      id: 2,
+      name: "Raw Constructions",
+      logo: rawConstructions,
+      category: "Constructions",
+      about:
+        "Raw Constructions carries a four-generation legacy, now led by the fifth generation. Rooted in craftsmanship from the British era, we blend heritage techniques with modern luxury to create timeless spaces.",
     },
   ];
 
@@ -284,9 +293,9 @@ const Index = () => {
                           <Badge variant="secondary" className="text-xs">
                             {sponsor.category}
                           </Badge>
-                          <Badge className="text-xs bg-slate-200 text-slate-800">
+                          {/* <Badge className="text-xs bg-slate-200 text-slate-800">
                             Platinum Sponsor
-                          </Badge>
+                          </Badge> */}
                         </div>
                       </div>
                     </CardContent>

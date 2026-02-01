@@ -59,7 +59,7 @@ const Hero = ({ phase, phaseLabel, examDate }: HeroProps) => {
               className="px-6 py-4 hover:scale-105 transition-transform bg-destructive hover:bg-destructive/90 text-white"
             >
               <a
-                href="https://forms.google.com/your-form-url"
+                href="https://forms.gle/3zTdGxCZvzTXJZGA8"
                 target="_blank"
                 rel="noopener noreferrer"
               >
